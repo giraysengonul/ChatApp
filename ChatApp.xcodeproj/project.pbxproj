@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C4D38AE329452180002841AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE229452180002841AA /* AppDelegate.swift */; };
-		C4D38AE529452180002841AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE429452180002841AA /* SceneDelegate.swift */; };
 		C4D38AE729452180002841AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE629452180002841AA /* ViewController.swift */; };
-		C4D38AEA29452180002841AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AE829452180002841AA /* Main.storyboard */; };
 		C4D38AEC29452182002841AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AEB29452182002841AA /* Assets.xcassets */; };
 		C4D38AEF29452182002841AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AED29452182002841AA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +16,7 @@
 /* Begin PBXFileReference section */
 		C4D38ADF29452180002841AA /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D38AE229452180002841AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4D38AE429452180002841AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C4D38AE629452180002841AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C4D38AE929452180002841AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4D38AEB29452182002841AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4D38AEE29452182002841AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4D38AF029452182002841AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D38AE229452180002841AA /* AppDelegate.swift */,
-				C4D38AE429452180002841AA /* SceneDelegate.swift */,
 				C4D38AE629452180002841AA /* ViewController.swift */,
-				C4D38AE829452180002841AA /* Main.storyboard */,
 				C4D38AEB29452182002841AA /* Assets.xcassets */,
 				C4D38AED29452182002841AA /* LaunchScreen.storyboard */,
 				C4D38AF029452182002841AA /* Info.plist */,
@@ -127,7 +121,6 @@
 			files = (
 				C4D38AEF29452182002841AA /* LaunchScreen.storyboard in Resources */,
 				C4D38AEC29452182002841AA /* Assets.xcassets in Resources */,
-				C4D38AEA29452180002841AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,21 +133,12 @@
 			files = (
 				C4D38AE729452180002841AA /* ViewController.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
-				C4D38AE529452180002841AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C4D38AE829452180002841AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4D38AE929452180002841AA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4D38AED29452182002841AA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +276,6 @@
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +303,6 @@
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
