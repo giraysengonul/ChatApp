@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE25022945E76300E8AEA8 /* AuthenticationInputView.swift */; };
+		C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE25042945E83500E8AEA8 /* CutomTextField.swift */; };
 		C4D38AE329452180002841AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE229452180002841AA /* AppDelegate.swift */; };
 		C4D38AE729452180002841AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE629452180002841AA /* LoginViewController.swift */; };
 		C4D38AEC29452182002841AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AEB29452182002841AA /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4BE25022945E76300E8AEA8 /* AuthenticationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInputView.swift; sourceTree = "<group>"; };
+		C4BE25042945E83500E8AEA8 /* CutomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomTextField.swift; sourceTree = "<group>"; };
 		C4D38ADF29452180002841AA /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D38AE229452180002841AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4D38AE629452180002841AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4BE25012945E45B00E8AEA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE25022945E76300E8AEA8 /* AuthenticationInputView.swift */,
+				C4BE25042945E83500E8AEA8 /* CutomTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C4D38AD629452180002841AA = {
 			isa = PBXGroup;
 			children = (
@@ -57,8 +70,8 @@
 				C4D38B2429453122002841AA /* Utils */,
 				C4D38B232945311C002841AA /* Service */,
 				C4D38B2229453116002841AA /* ViewModel */,
-				C4D38B2129453111002841AA /* View */,
 				C4D38B202945310C002841AA /* Model */,
+				C4BE25012945E45B00E8AEA8 /* View */,
 				C4D38B1F29453103002841AA /* Controller */,
 				C4D38B1E294530EC002841AA /* Files */,
 			);
@@ -89,13 +102,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C4D38B2129453111002841AA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C4D38B2229453116002841AA /* ViewModel */ = {
@@ -193,6 +199,8 @@
 				C4D38B26294531D4002841AA /* Extension.swift in Sources */,
 				C4D38AE729452180002841AA /* LoginViewController.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
+				C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */,
+				C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
