@@ -28,7 +28,6 @@ class AuthenticationInputView: UIView {
             textField.leadingAnchor.constraint(equalTo: imageView.trailingAnchor,constant: 8),
             trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: 8)
         ])
-        
     }
     
     required init?(coder: NSCoder) {
