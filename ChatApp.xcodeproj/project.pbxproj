@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C417539B29470120004E3103 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417539A29470120004E3103 /* LoginViewModel.swift */; };
 		C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE25022945E76300E8AEA8 /* AuthenticationInputView.swift */; };
 		C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE25042945E83500E8AEA8 /* CutomTextField.swift */; };
 		C4D38AE329452180002841AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38AE229452180002841AA /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C417539A29470120004E3103 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C4BE25022945E76300E8AEA8 /* AuthenticationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInputView.swift; sourceTree = "<group>"; };
 		C4BE25042945E83500E8AEA8 /* CutomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomTextField.swift; sourceTree = "<group>"; };
 		C4D38ADF29452180002841AA /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 		C4D38B2229453116002841AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C417539A29470120004E3103 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				C4D38B26294531D4002841AA /* Extension.swift in Sources */,
 				C4D38AE729452180002841AA /* LoginViewController.swift in Sources */,
+				C417539B29470120004E3103 /* LoginViewModel.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
 				C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */,
 				C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */,
