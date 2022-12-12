@@ -28,7 +28,11 @@ class LoginViewController: UIViewController {
         let containerView = AuthenticationInputView(image: UIImage(systemName: "lock")!, textField: passwordTextField)
         return containerView
     }()
-    private let passwordTextField = CustomTextField(placeholder: "Password")
+    private let passwordTextField: CustomTextField = {
+        let textField = CustomTextField(placeholder: "Password")
+        textField.isSecureTextEntry = true
+        return textField
+    }()
     private var stackView = UIStackView()
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -36,6 +40,13 @@ class LoginViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         button.isEnabled = false
+        return button
+    }()
+    private lazy var  switchToRegistrationPage:UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Click To Become A Member",attributes: [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 14)])
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(hanleGoToRegisterView), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -46,7 +57,7 @@ class LoginViewController: UIViewController {
         layout()
     }
 }
- // MARK: - Selector
+// MARK: - Selector
 extension LoginViewController{
     @objc private func handleTextFieldChange(_ sender: UITextField){
         if sender == emailTextField{
@@ -55,6 +66,10 @@ extension LoginViewController{
             viewModel.passwordTextField = sender.text
         }
         loginButtonStatus()
+    }
+    @objc private func hanleGoToRegisterView(_ sender: UIButton){
+        let controller = RegisterVİewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 // MARK: - Helpers
@@ -82,10 +97,13 @@ extension LoginViewController{
         //email/passwordTextField
         emailTextField.addTarget(self, action: #selector(handleTextFieldChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(handleTextFieldChange), for: .editingChanged)
+        //switchToRegistrationPage
+        switchToRegistrationPage.translatesAutoresizingMaskIntoConstraints = false
     }
     private func layout(){
         view.addSubview(logoImageView)
         view.addSubview(stackView)
+        view.addSubview(switchToRegistrationPage)
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             logoImageView.heightAnchor.constraint(equalToConstant: 150),
@@ -95,7 +113,11 @@ extension LoginViewController{
             stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 32),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            emailContainerView.heightAnchor.constraint(equalToConstant: 50)
+            emailContainerView.heightAnchor.constraint(equalToConstant: 50),
+            
+            switchToRegistrationPage.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8),
+            switchToRegistrationPage.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 32),
+            view.trailingAnchor.constraint(equalTo: switchToRegistrationPage.trailingAnchor, constant: 32)
         ])
     }
 }
