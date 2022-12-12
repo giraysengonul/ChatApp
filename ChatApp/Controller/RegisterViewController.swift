@@ -10,12 +10,13 @@ import UIKit
 class RegisterViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = RegisterViewModel()
-    private let addCameraButton: UIButton = {
+    private lazy var addCameraButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.setImage(UIImage(systemName: "camera.circle"), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
+        button.addTarget(self, action: #selector(handlePhoto), for: .touchUpInside)
         return button
     }()
     private lazy var emailContainerView: AuthenticationInputView = {
@@ -55,7 +56,7 @@ class RegisterViewController: UIViewController {
     }()
     private lazy var switchToLoginPage:UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Login Page",attributes: [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedTitle = NSMutableAttributedString(string: "If you ara a memeber, Login page",attributes: [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 14)])
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(hanleGoToLoginView), for: .touchUpInside)
         return button
@@ -83,6 +84,11 @@ extension RegisterViewController{
     }
     @objc func hanleGoToLoginView(_ sender: UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    @objc private func handlePhoto(_ sender: UIButton){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        self.present(picker, animated: true)
     }
 }
 // MARK: - Helpers
@@ -136,6 +142,18 @@ extension RegisterViewController{
             view.trailingAnchor.constraint(equalTo: switchToLoginPage.trailingAnchor, constant: 32)
             
         ])
-        
+    }
+}
+// MARK: - UIImagePickerControllerDelegate,UINavigationControllerDelegate
+extension RegisterViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        addCameraButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        addCameraButton.layer.cornerRadius = 150 / 2
+        addCameraButton.clipsToBounds = true
+        addCameraButton.layer.borderColor = UIColor.white.cgColor
+        addCameraButton.layer.borderWidth = 2
+        addCameraButton.contentMode = .scaleAspectFill
+        dismiss(animated: true)
     }
 }
