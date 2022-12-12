@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         button.isEnabled = false
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        button.layer.cornerRadius = 7
         return button
     }()
     private lazy var  switchToRegistrationPage:UIButton = {
@@ -68,7 +70,7 @@ extension LoginViewController{
         loginButtonStatus()
     }
     @objc private func hanleGoToRegisterView(_ sender: UIButton){
-        let controller = RegisterVİewController()
+        let controller = RegisterViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
