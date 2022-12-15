@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
 class RegisterViewController: UIViewController {
     // MARK: - Properties
+    private var profileImageToUpload : UIImage?
     private var viewModel = RegisterViewModel()
     private lazy var addCameraButton: UIButton = {
         let button = UIButton(type: .system)
@@ -44,7 +47,7 @@ class RegisterViewController: UIViewController {
         return textField
     }()
     private var stackView = UIStackView()
-    private let registerButton: UIButton = {
+    private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -52,6 +55,7 @@ class RegisterViewController: UIViewController {
         button.isEnabled = false
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         button.layer.cornerRadius = 7
+        button.addTarget(self, action: #selector(hadleRegisterBuuton), for: .touchUpInside)
         return button
     }()
     private lazy var switchToLoginPage:UIButton = {
@@ -70,6 +74,50 @@ class RegisterViewController: UIViewController {
 }
 // MARK: - Selector
 extension RegisterViewController{
+    @objc private func hadleRegisterBuuton(_ sender: UIButton){
+        guard let emailText = emailTextField.text else{ return }
+        guard let nameText = nameTextField.text else{ return }
+        guard let usernameText = usernameTextField.text else{ return }
+        guard let passwordText = passwordTextField.text else{ return }
+        guard let profileImage = profileImageToUpload else{ return }
+        let photoName = UUID().uuidString
+        guard let profileData = profileImage.jpegData(compressionQuality: 0.5) else{ return }
+        let referance = Storage.storage().reference(withPath: "media/profile_image/\(photoName).png")
+        referance.putData(profileData) { storageMeta, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+            referance.downloadURL { url, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                }
+                guard let profileImageUrl = url?.absoluteString else{ return }
+                Auth.auth().createUser(withEmail: emailText, password: passwordText) { result, error in
+                    if let error = error{
+                        print(error.localizedDescription)
+                    }
+                    guard let userUid = result?.user.uid else{ return }
+                    let data = [
+                        "email": emailText,
+                        "name": nameText,
+                        "username": usernameText,
+                        "profileImageUrl": profileImageUrl,
+                        "uid": userUid
+                    ] as [String: Any]
+                    Firestore.firestore().collection("users").document(userUid).setData(data) { error in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }
+                        print("Başarılı")
+                    }
+                    
+                }
+                
+                
+            }
+        }
+        
+    }
     @objc private func handleTextFieldChange(_ sender: UITextField){
         if sender == emailTextField{
             viewModel.email = sender.text
@@ -148,6 +196,7 @@ extension RegisterViewController{
 extension RegisterViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as! UIImage
+        self.profileImageToUpload = image
         addCameraButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
         addCameraButton.layer.cornerRadius = 150 / 2
         addCameraButton.clipsToBounds = true
