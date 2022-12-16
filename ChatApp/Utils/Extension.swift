@@ -19,7 +19,6 @@ extension UIViewController{
         let progressHud = JGProgressHUD(style: .dark)
         progressHud.textLabel.text = "Plase Wait"
         showProgress ? progressHud.show(in: view):  progressHud.dismiss()
-        
     }
     
 }
