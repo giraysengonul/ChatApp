@@ -81,14 +81,17 @@ extension RegisterViewController{
         guard let passwordText = passwordTextField.text else{ return }
         guard let profileImage = profileImageToUpload else{ return }
         let user = AuthenticationServiceUser(emailText: emailText, passwordText: passwordText, nameText: nameText, usernameText: usernameText)
+        self.showProgressHud(showProgress: true)
         AuthenticationService.register(withUser: user, image: profileImage) { error in
             if let error = error{
                 print("Error: \(error.localizedDescription)")
+                self.showProgressHud(showProgress: false)
                 return
             }
+            self.showProgressHud(showProgress: false)
             self.dismiss(animated: true)
         }
-
+        
         
     }
     @objc private func handleTextFieldChange(_ sender: UITextField){

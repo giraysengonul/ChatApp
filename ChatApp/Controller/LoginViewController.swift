@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import JGProgressHUD
 class LoginViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = LoginViewModel()
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         return textField
     }()
     private var stackView = UIStackView()
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -65,12 +65,18 @@ extension LoginViewController{
     @objc func handleLoginButton(_ sender: UIButton){
         guard let emailText = emailTextField.text else{ return}
         guard let passwordText = passwordTextField.text else { return }
+        showProgressHud(showProgress: true)
         AuthenticationService.login(withEmail: emailText, password: passwordText) { result, error in
             if let error = error{
                 print("Error: \(error.localizedDescription)")
+                self.showProgressHud(showProgress: false)
+                return
             }
+            self.showProgressHud(showProgress: false)
             self.dismiss(animated: true)
         }
+        
+        
     }
     @objc private func handleTextFieldChange(_ sender: UITextField){
         if sender == emailTextField{

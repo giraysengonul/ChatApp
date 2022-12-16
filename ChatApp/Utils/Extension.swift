@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import JGProgressHUD
 extension UIViewController{
     func configureGradientLayer(){
         let gradient = CAGradientLayer()
@@ -15,4 +15,11 @@ extension UIViewController{
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
     }
+    func showProgressHud(showProgress: Bool){
+        let progressHud = JGProgressHUD(style: .dark)
+        progressHud.textLabel.text = "Plase Wait"
+        showProgress ? progressHud.show(in: view):  progressHud.dismiss()
+        
+    }
+    
 }
