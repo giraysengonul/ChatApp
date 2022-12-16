@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         button.isEnabled = false
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         button.layer.cornerRadius = 7
+        button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
         return button
     }()
     private lazy var  switchToRegistrationPage:UIButton = {
@@ -61,6 +62,16 @@ class LoginViewController: UIViewController {
 }
 // MARK: - Selector
 extension LoginViewController{
+    @objc func handleLoginButton(_ sender: UIButton){
+        guard let emailText = emailTextField.text else{ return}
+        guard let passwordText = passwordTextField.text else { return }
+        AuthenticationService.login(withEmail: emailText, password: passwordText) { result, error in
+            if let error = error{
+                print("Error: \(error.localizedDescription)")
+            }
+            self.dismiss(animated: true)
+        }
+    }
     @objc private func handleTextFieldChange(_ sender: UITextField){
         if sender == emailTextField{
             viewModel.emailTextField = sender.text
