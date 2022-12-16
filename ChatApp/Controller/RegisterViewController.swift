@@ -80,42 +80,15 @@ extension RegisterViewController{
         guard let usernameText = usernameTextField.text else{ return }
         guard let passwordText = passwordTextField.text else{ return }
         guard let profileImage = profileImageToUpload else{ return }
-        let photoName = UUID().uuidString
-        guard let profileData = profileImage.jpegData(compressionQuality: 0.5) else{ return }
-        let referance = Storage.storage().reference(withPath: "media/profile_image/\(photoName).png")
-        referance.putData(profileData) { storageMeta, error in
-            if let error = error {
+        let user = AuthenticationServiceUser(emailText: emailText, passwordText: passwordText, nameText: nameText, usernameText: usernameText)
+        AuthenticationService.register(withUser: user, image: profileImage) { error in
+            if let error = error{
                 print("Error: \(error.localizedDescription)")
+                return
             }
-            referance.downloadURL { url, error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                }
-                guard let profileImageUrl = url?.absoluteString else{ return }
-                Auth.auth().createUser(withEmail: emailText, password: passwordText) { result, error in
-                    if let error = error{
-                        print(error.localizedDescription)
-                    }
-                    guard let userUid = result?.user.uid else{ return }
-                    let data = [
-                        "email": emailText,
-                        "name": nameText,
-                        "username": usernameText,
-                        "profileImageUrl": profileImageUrl,
-                        "uid": userUid
-                    ] as [String: Any]
-                    Firestore.firestore().collection("users").document(userUid).setData(data) { error in
-                        if let error = error{
-                            print(error.localizedDescription)
-                        }
-                        print("Başarılı")
-                    }
-                    
-                }
-                
-                
-            }
+            self.dismiss(animated: true)
         }
+
         
     }
     @objc private func handleTextFieldChange(_ sender: UITextField){

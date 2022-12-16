@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C417539B29470120004E3103 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417539A29470120004E3103 /* LoginViewModel.swift */; };
+		C451CD1D294CA34400ABD64B /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C451CD1C294CA34400ABD64B /* AuthenticationService.swift */; };
+		C451CD1F294CA49A00ABD64B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C451CD1E294CA49A00ABD64B /* HomeViewController.swift */; };
 		C480FE68294B2FA0002FC15C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C480FE67294B2FA0002FC15C /* GoogleService-Info.plist */; };
 		C480FE6B294B2FF6002FC15C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C480FE6A294B2FF6002FC15C /* FirebaseAuth */; };
 		C480FE6D294B2FF6002FC15C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C480FE6C294B2FF6002FC15C /* FirebaseFirestore */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		C417539A29470120004E3103 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C451CD1C294CA34400ABD64B /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		C451CD1E294CA49A00ABD64B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C480FE67294B2FA0002FC15C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4837205294754DD00FF1560 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C483720729475FBE00FF1560 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C451CD1B294CA22800ABD64B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C451CD1C294CA34400ABD64B /* AuthenticationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C4BE25012945E45B00E8AEA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,8 +93,8 @@
 		C4D38AE129452180002841AA /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				C451CD1B294CA22800ABD64B /* Service */,
 				C4D38B2429453122002841AA /* Utils */,
-				C4D38B232945311C002841AA /* Service */,
 				C4D38B2229453116002841AA /* ViewModel */,
 				C4D38B202945310C002841AA /* Model */,
 				C4BE25012945E45B00E8AEA8 /* View */,
@@ -109,6 +121,7 @@
 			children = (
 				C4D38AE629452180002841AA /* LoginViewController.swift */,
 				C4837205294754DD00FF1560 /* RegisterViewController.swift */,
+				C451CD1E294CA49A00ABD64B /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,13 +140,6 @@
 				C483720729475FBE00FF1560 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C4D38B232945311C002841AA /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		C4D38B2429453122002841AA /* Utils */ = {
@@ -226,7 +232,9 @@
 				C4D38B26294531D4002841AA /* Extension.swift in Sources */,
 				C4D38AE729452180002841AA /* LoginViewController.swift in Sources */,
 				C4837206294754DD00FF1560 /* RegisterViewController.swift in Sources */,
+				C451CD1D294CA34400ABD64B /* AuthenticationService.swift in Sources */,
 				C483720829475FBE00FF1560 /* RegisterViewModel.swift in Sources */,
+				C451CD1F294CA49A00ABD64B /* HomeViewController.swift in Sources */,
 				C417539B29470120004E3103 /* LoginViewModel.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
 				C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */,
