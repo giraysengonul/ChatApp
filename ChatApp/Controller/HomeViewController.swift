@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
      // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        signOut()
+       authenticationStatus()
         style()
         layout()
     }
@@ -37,7 +37,7 @@ extension HomeViewController{
         }
     }
     private func style(){
-        view.backgroundColor = .red
+        view.backgroundColor = .white
     }
     private func layout(){
     }
