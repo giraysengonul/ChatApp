@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     private var messageButton: UIBarButtonItem!
     private var newMessageButton: UIBarButtonItem!
     private var container =  Container()
+    private let viewControllers:[UIViewController] = [MessageViewController(), NewMessageViewController()]
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,17 +73,31 @@ extension HomeViewController{
 // MARK: - Selector
 extension HomeViewController{
     @objc private func handleMessageButton(){
-        
+        if self.container.children.first == MessageViewController() { return }
+        self.container.add(viewControllers[0])
+        self.viewControllers[0].view.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.viewControllers[0].view.alpha = 1
+            self.viewControllers[1].view.frame.origin.x = -1000
+        } completion: { _ in
+            self.viewControllers[1].remove()
+            self.viewControllers[1].view.frame.origin.x = 0
+        }
+
+       
     }
     @objc private func handleNewMessageButton(){
-        
+        if self.container.children.first == NewMessageViewController() { return }
+        self.container.add(viewControllers[1])
+        self.viewControllers[1].view.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.viewControllers[1].view.alpha = 1
+            self.viewControllers[0].view.frame.origin.x = +1000
+        } completion: { _ in
+            self.viewControllers[0].remove()
+            self.viewControllers[0].view.frame.origin.x = 0
+        }
     }
 }
 
 
-class Container: UIViewController{
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemPink
-    }
-}

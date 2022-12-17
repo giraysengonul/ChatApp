@@ -24,6 +24,9 @@
 		C4D38AEF29452182002841AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AED29452182002841AA /* LaunchScreen.storyboard */; };
 		C4D38B26294531D4002841AA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38B25294531D4002841AA /* Extension.swift */; };
 		C4E95521294CDE1700CD9C71 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C4E95520294CDE1700CD9C71 /* JGProgressHUD */; };
+		C4F4C2C0294E67F600FC70D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */; };
+		C4F4C2C2294E680900FC70D5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */; };
+		C4F4C2C4294E682800FC70D5 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		C4D38AEE29452182002841AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4D38AF029452182002841AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4D38B25294531D4002841AA /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,9 @@
 				C4D38AE629452180002841AA /* LoginViewController.swift */,
 				C4837205294754DD00FF1560 /* RegisterViewController.swift */,
 				C451CD1E294CA49A00ABD64B /* HomeViewController.swift */,
+				C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */,
+				C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */,
+				C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,12 +245,15 @@
 				C4D38B26294531D4002841AA /* Extension.swift in Sources */,
 				C4D38AE729452180002841AA /* LoginViewController.swift in Sources */,
 				C4837206294754DD00FF1560 /* RegisterViewController.swift in Sources */,
+				C4F4C2C0294E67F600FC70D5 /* ContainerViewController.swift in Sources */,
 				C451CD1D294CA34400ABD64B /* AuthenticationService.swift in Sources */,
 				C483720829475FBE00FF1560 /* RegisterViewModel.swift in Sources */,
 				C451CD1F294CA49A00ABD64B /* HomeViewController.swift in Sources */,
+				C4F4C2C4294E682800FC70D5 /* NewMessageViewController.swift in Sources */,
 				C417539B29470120004E3103 /* LoginViewModel.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
 				C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */,
+				C4F4C2C2294E680900FC70D5 /* MessageViewController.swift in Sources */,
 				C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
