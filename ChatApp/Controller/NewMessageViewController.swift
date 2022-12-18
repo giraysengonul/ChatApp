@@ -23,7 +23,7 @@ extension NewMessageViewController{
         //tableView
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 75
         tableView.separatorStyle  = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,8 +45,7 @@ extension NewMessageViewController: UITableViewDataSource, UITableViewDelegate{
         return 5
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .green
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
         return cell
     }
 }
