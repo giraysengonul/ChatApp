@@ -55,6 +55,7 @@ extension HomeViewController{
         self.navigationItem.leftBarButtonItems = [messageButton, newMessageButton]
         //container
         configureContainer()
+        handleMessageButton()
     }
     private func layout(){
     }
