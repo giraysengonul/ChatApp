@@ -16,6 +16,14 @@ class NewMessageViewController: UIViewController{
         style()
         layout()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Service.fetchUsers { users in
+            users.forEach { user in
+                print(user.name)
+            }
+        }
+    }
 }
 // MARK: - Helpers
 extension NewMessageViewController{
