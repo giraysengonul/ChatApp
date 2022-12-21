@@ -30,6 +30,7 @@
 		C4F4C2C0294E67F600FC70D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */; };
 		C4F4C2C2294E680900FC70D5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */; };
 		C4F4C2C4294E682800FC70D5 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */; };
+		C4FF11F92952E2DD0015B648 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C4FF11F82952E2DD0015B648 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 				C480FE6B294B2FF6002FC15C /* FirebaseAuth in Frameworks */,
 				C480FE6D294B2FF6002FC15C /* FirebaseFirestore in Frameworks */,
 				C480FE6F294B2FF6002FC15C /* FirebaseStorage in Frameworks */,
+				C4FF11F92952E2DD0015B648 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +193,7 @@
 				C480FE6C294B2FF6002FC15C /* FirebaseFirestore */,
 				C480FE6E294B2FF6002FC15C /* FirebaseStorage */,
 				C4E95520294CDE1700CD9C71 /* JGProgressHUD */,
+				C4FF11F82952E2DD0015B648 /* SDWebImage */,
 			);
 			productName = ChatApp;
 			productReference = C4D38ADF29452180002841AA /* ChatApp.app */;
@@ -223,6 +226,7 @@
 			packageReferences = (
 				C480FE69294B2FF6002FC15C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C4E9551F294CDE1700CD9C71 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				C4FF11F72952E2DD0015B648 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = C4D38AE029452180002841AA /* Products */;
 			projectDirPath = "";
@@ -492,6 +496,14 @@
 				kind = branch;
 			};
 		};
+		C4FF11F72952E2DD0015B648 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -514,6 +526,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C4E9551F294CDE1700CD9C71 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
+		};
+		C4FF11F82952E2DD0015B648 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4FF11F72952E2DD0015B648 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
