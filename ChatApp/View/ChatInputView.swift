@@ -11,20 +11,20 @@ class ChatInputView: UIView {
     // MARK: - Properties
     private let textInputView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .title2)
+        textView.font = UIFont.preferredFont(forTextStyle: .title3)
         return textView
     }()
     private let sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Send", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         return button
     }()
     private let placeHolderLabel:UILabel = {
         let label = UILabel()
-        label.text = "Message"
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = "Message.."
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
         return label
     }()
     // MARK: - Lifecycle
