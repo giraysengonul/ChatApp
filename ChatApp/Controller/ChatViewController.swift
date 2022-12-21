@@ -36,7 +36,7 @@ class ChatViewController: UICollectionViewController {
  // MARK: - Helpers
 extension ChatViewController{
     private func style(){
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(MessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     private func layout(){
         
@@ -48,8 +48,7 @@ extension ChatViewController{
         return 5
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .yellow
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
         return cell
     }
 }
