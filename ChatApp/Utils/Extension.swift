@@ -34,3 +34,12 @@ extension UIViewController{
     }
     
 }
+extension UIView{
+    func configureGradientLayer(){
+        let gradient = CAGradientLayer()
+        gradient.locations = [0,1]
+        gradient.colors = [UIColor.systemBlue.cgColor, UIColor.systemPink.cgColor]
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
+    }
+}

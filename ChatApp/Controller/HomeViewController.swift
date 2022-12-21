@@ -21,6 +21,10 @@ class HomeViewController: UIViewController {
         style()
         layout()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handleMessageButton()
+    }
 }
 // MARK: - Helpers
 extension HomeViewController{
@@ -88,8 +92,8 @@ extension HomeViewController{
             self.viewControllers[1].remove()
             self.viewControllers[1].view.frame.origin.x = 0
         }
-
-       
+        
+        
     }
     @objc private func handleNewMessageButton(){
         if self.container.children.first == NewMessageViewController() { return }
