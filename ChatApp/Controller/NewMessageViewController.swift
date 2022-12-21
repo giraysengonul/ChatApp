@@ -7,8 +7,12 @@
 
 import UIKit
 private let reuseIdentifier = "UserCell"
+protocol NewMessageViewControllerProtocol: AnyObject {
+    func goToChatView(user: User)
+}
 class NewMessageViewController: UIViewController{
     // MARK: - Properties
+    weak var delegate: NewMessageViewControllerProtocol?
     private let tableView = UITableView()
     private var users = [User]()
     // MARK: - Lifecycle
@@ -56,5 +60,8 @@ extension NewMessageViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
         cell.user = users[indexPath.row]
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.goToChatView(user: users[indexPath.row])
     }
 }

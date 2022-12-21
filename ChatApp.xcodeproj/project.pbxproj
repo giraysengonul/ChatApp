@@ -26,6 +26,7 @@
 		C4D38AEC29452182002841AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AEB29452182002841AA /* Assets.xcassets */; };
 		C4D38AEF29452182002841AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D38AED29452182002841AA /* LaunchScreen.storyboard */; };
 		C4D38B26294531D4002841AA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D38B25294531D4002841AA /* Extension.swift */; };
+		C4E90B7C2953345E00294396 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E90B7B2953345E00294396 /* ChatViewController.swift */; };
 		C4E95521294CDE1700CD9C71 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C4E95520294CDE1700CD9C71 /* JGProgressHUD */; };
 		C4F4C2C0294E67F600FC70D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */; };
 		C4F4C2C2294E680900FC70D5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */; };
@@ -52,6 +53,7 @@
 		C4D38AEE29452182002841AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4D38AF029452182002841AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4D38B25294531D4002841AA /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C4E90B7B2953345E00294396 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				C4F4C2BF294E67F600FC70D5 /* ContainerViewController.swift */,
 				C4F4C2C1294E680900FC70D5 /* MessageViewController.swift */,
 				C4F4C2C3294E682800FC70D5 /* NewMessageViewController.swift */,
+				C4E90B7B2953345E00294396 /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				C4433190294F33E90095EB60 /* User.swift in Sources */,
 				C4433192294F34740095EB60 /* Service.swift in Sources */,
 				C4F4C2C4294E682800FC70D5 /* NewMessageViewController.swift in Sources */,
+				C4E90B7C2953345E00294396 /* ChatViewController.swift in Sources */,
 				C417539B29470120004E3103 /* LoginViewModel.swift in Sources */,
 				C4D38AE329452180002841AA /* AppDelegate.swift in Sources */,
 				C4BE25052945E83500E8AEA8 /* CutomTextField.swift in Sources */,
