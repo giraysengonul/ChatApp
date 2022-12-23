@@ -37,6 +37,7 @@ class ChatViewController: UICollectionViewController {
 extension ChatViewController{
     private func style(){
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        chatInputView.delegate = self
     }
     private func layout(){
         
@@ -58,5 +59,17 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout{
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width, height: 60)
+    }
+}
+ // MARK: - ChatInputViewProtocol
+extension ChatViewController: ChatInputViewProtocol{
+    func sendMessage(_ chatInputView: ChatInputView, message: String) {
+       
+        Service.sendMessage(message: message, toUser: user) { error in
+            if let error = error{
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+        }
     }
 }

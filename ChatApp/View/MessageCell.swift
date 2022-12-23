@@ -44,7 +44,7 @@ class MessageCell: UICollectionViewCell {
 // MARK: - Helpers
 extension MessageCell{
     private func style(){
-        backgroundColor = .systemGreen
+    
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.layer.cornerRadius = 34 / 2
         messageContainerView.translatesAutoresizingMaskIntoConstraints = false
