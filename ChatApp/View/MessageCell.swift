@@ -6,9 +6,14 @@
 //
 
 import UIKit
-
+import SDWebImage
 class MessageCell: UICollectionViewCell {
     // MARK: - Properties
+    var messageContainerViewLeft: NSLayoutConstraint!
+    var messageContainerViewRight: NSLayoutConstraint!
+    var message: Message?{
+        didSet{ configure() }
+    }
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -44,7 +49,7 @@ class MessageCell: UICollectionViewCell {
 // MARK: - Helpers
 extension MessageCell{
     private func style(){
-    
+        
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.layer.cornerRadius = 34 / 2
         messageContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +68,6 @@ extension MessageCell{
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
             
             messageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            messageContainerView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
             messageContainerView.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
             
             messageTextView.topAnchor.constraint(equalTo: messageContainerView.topAnchor),
@@ -71,5 +75,25 @@ extension MessageCell{
             messageTextView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor),
             messageTextView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor),
         ])
+        self.messageContainerViewLeft = messageContainerView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8)
+        self.messageContainerViewLeft.isActive = false
+        self.messageContainerViewRight = messageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        self.messageContainerViewRight.isActive = false
+        
+    }
+    private func configure(){
+        guard let message = self.message else { return }
+        let viewModel = MessageViewModel(message: message)
+        messageTextView.text = message.text
+        messageContainerView.backgroundColor = viewModel.messageBackgroundColor
+        messageContainerViewRight.isActive = viewModel.currentUserActive
+        messageContainerViewLeft.isActive = !viewModel.currentUserActive
+        profileImageView.isHidden = viewModel.currentUserActive
+        profileImageView.sd_setImage(with: viewModel.profileImageView)
+        if viewModel.currentUserActive{
+            messageContainerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
+        }else{
+            messageContainerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        }
     }
 }

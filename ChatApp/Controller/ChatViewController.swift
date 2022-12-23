@@ -8,11 +8,11 @@
 import UIKit
 private let reuseIdentifier = "MessageCell"
 class ChatViewController: UICollectionViewController {
-     // MARK: - Properties
+    // MARK: - Properties
     var messages = [Message]()
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.width * 0.2))
     private let user: User
-     // MARK: - Lifecycle
+    // MARK: - Lifecycle
     init(user: User) {
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -23,9 +23,9 @@ class ChatViewController: UICollectionViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMessages()
         style()
         layout()
-        fetchMessages()
     }
     
     override var inputAccessoryView: UIView?{
@@ -34,7 +34,7 @@ class ChatViewController: UICollectionViewController {
     override var canBecomeFirstResponder: Bool{
         return true
     }
-     // MARK: - Service
+    // MARK: - Service
     private func fetchMessages(){
         Service.fetchMessages(user: user) { messages in
             self.messages = messages
@@ -42,23 +42,26 @@ class ChatViewController: UICollectionViewController {
         }
     }
 }
- // MARK: - Helpers
+// MARK: - Helpers
 extension ChatViewController{
     private func style(){
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         chatInputView.delegate = self
+        self.navigationController?.navigationBar.tintColor = .white
     }
     private func layout(){
         
     }
 }
- // MARK: - UIColllectionviewDelegate/DataSource
+// MARK: - UIColllectionviewDelegate/DataSource
 extension ChatViewController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.messages.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
+        cell.message = messages[indexPath.row]
+        cell.message?.user = user
         return cell
     }
 }
@@ -70,10 +73,10 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout{
         return .init(width: view.frame.width, height: 60)
     }
 }
- // MARK: - ChatInputViewProtocol
+// MARK: - ChatInputViewProtocol
 extension ChatViewController: ChatInputViewProtocol{
     func sendMessage(_ chatInputView: ChatInputView, message: String) {
-       
+        
         Service.sendMessage(message: message, toUser: user) { error in
             if let error = error{
                 print("Error: \(error.localizedDescription)")
