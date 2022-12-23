@@ -79,6 +79,10 @@ extension ChatInputView{
             
         ])
     }
+    func clear(){
+        textInputView.text = nil
+        placeHolderLabel.isHidden = false
+    }
 }
 // MARK: - Selector
 extension ChatInputView{

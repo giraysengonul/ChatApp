@@ -9,6 +9,7 @@ import UIKit
 private let reuseIdentifier = "MessageCell"
 class ChatViewController: UICollectionViewController {
      // MARK: - Properties
+    var messages = [Message]()
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.width * 0.2))
     private let user: User
      // MARK: - Lifecycle
@@ -24,6 +25,7 @@ class ChatViewController: UICollectionViewController {
         super.viewDidLoad()
         style()
         layout()
+        fetchMessages()
     }
     
     override var inputAccessoryView: UIView?{
@@ -31,6 +33,13 @@ class ChatViewController: UICollectionViewController {
     }
     override var canBecomeFirstResponder: Bool{
         return true
+    }
+     // MARK: - Service
+    private func fetchMessages(){
+        Service.fetchMessages(user: user) { messages in
+            self.messages = messages
+            self.collectionView.reloadData()
+        }
     }
 }
  // MARK: - Helpers
@@ -46,7 +55,7 @@ extension ChatViewController{
  // MARK: - UIColllectionviewDelegate/DataSource
 extension ChatViewController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.messages.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
@@ -71,5 +80,6 @@ extension ChatViewController: ChatInputViewProtocol{
                 return
             }
         }
+        chatInputView.clear()
     }
 }
