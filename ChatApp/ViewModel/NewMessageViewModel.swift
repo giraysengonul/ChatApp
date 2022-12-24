@@ -6,7 +6,7 @@
 //
 
 import UIKit
-struct MessageViewModel {
+struct NewMessageViewModel {
     
     private let message: Message
     init(message: Message) {

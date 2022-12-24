@@ -46,7 +46,7 @@ class ChatViewController: UICollectionViewController {
 // MARK: - Helpers
 extension ChatViewController{
     private func style(){
-        collectionView.register(MessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(NewMessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         chatInputView.delegate = self
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationItem.title = user.username
@@ -61,7 +61,7 @@ extension ChatViewController{
         return self.messages.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! NewMessageCell
         cell.message = messages[indexPath.row]
         cell.message?.user = user
         return cell
@@ -72,7 +72,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout{
         return .init(top: 16, left: 0, bottom: 16, right: 0)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let fakeCell = MessageCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 50))
+        let fakeCell = NewMessageCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 50))
         fakeCell.message = messages[indexPath.row]
         fakeCell.layoutIfNeeded()
         let target = CGSize(width: view.frame.width, height: 1000)
