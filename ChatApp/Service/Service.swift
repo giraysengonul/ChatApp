@@ -30,6 +30,10 @@ struct Service {
         ] as [String: Any]
         Firestore.firestore().collection("messages").document(currentUid).collection(toUser.uid).addDocument(data: data) { error in
             Firestore.firestore().collection("messages").document(toUser.uid).collection(currentUid).addDocument(data: data,completion: completion)
+            
+            Firestore.firestore().collection("messages").document(currentUid).collection("last-messages").document(toUser.uid).setData(data)
+            
+            Firestore.firestore().collection("messages").document(toUser.uid).collection("last-messages").document(currentUid).setData(data)   
         }
     }
    static func fetchMessages(user: User,completion:@escaping([Message])-> Void) {
