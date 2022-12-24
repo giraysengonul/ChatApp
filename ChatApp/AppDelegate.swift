@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithDefaultBackground()
         appearance.backgroundImage = self.image(fromLayer: gradient)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.preferredFont(forTextStyle: .title2)]
         controller.navigationBar.standardAppearance = appearance
         controller.navigationBar.compactAppearance = appearance
         controller.navigationBar.scrollEdgeAppearance = appearance

@@ -68,6 +68,7 @@ extension MessageCell{
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
             
             messageContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+            messageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             messageContainerView.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
             
             messageTextView.topAnchor.constraint(equalTo: messageContainerView.topAnchor),
