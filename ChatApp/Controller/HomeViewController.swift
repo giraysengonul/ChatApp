@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     private let newMessageViewController = NewMessageViewController()
     private let messageViewController = MessageViewController()
     private lazy var viewControllers:[UIViewController] = [messageViewController, newMessageViewController]
+    private let profileView = ProfileView()
+    private var isProfileViewActive: Bool = false
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,16 +58,28 @@ extension HomeViewController{
     }
     private func style(){
         view.backgroundColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
         messageButton = UIBarButtonItem(customView: configureBarItem(text: "Message", selector: #selector(handleMessageButton)))
         newMessageButton = UIBarButtonItem(customView: configureBarItem(text: "New Message", selector: #selector(handleNewMessageButton)))
         self.navigationItem.leftBarButtonItems = [messageButton, newMessageButton]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: #selector(handleProfileButton))
         self.newMessageViewController.delegate = self
         self.messageViewController.delegate = self
+        profileView.translatesAutoresizingMaskIntoConstraints = false
+        profileView.layer.cornerRadius = 20
+        profileView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         //container
         configureContainer()
         handleMessageButton()
     }
     private func layout(){
+        view.addSubview(profileView)
+        NSLayoutConstraint.activate([
+            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileView.leadingAnchor.constraint(equalTo: view.trailingAnchor),
+            profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            profileView.widthAnchor.constraint(equalToConstant: view.frame.width * 0.6)
+        ])
     }
     private func  configureContainer(){
         guard let containerView = container.view else{ return }
@@ -85,6 +99,17 @@ extension HomeViewController{
 }
 // MARK: - Selector
 extension HomeViewController{
+    @objc private func handleProfileButton(_ sender: UIBarButtonItem){
+        UIView.animate(withDuration: 0.5) {
+            if self.isProfileViewActive{
+                self.profileView.frame.origin.x = self.view.frame.width
+            }else{
+                self.profileView.frame.origin.x = self.view.frame.width * 0.4
+            }
+        }
+        self.isProfileViewActive.toggle()
+        
+    }
     @objc private func handleMessageButton(){
         if self.container.children.first == MessageViewController() { return }
         self.container.add(viewControllers[0])
