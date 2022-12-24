@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C417539B29470120004E3103 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417539A29470120004E3103 /* LoginViewModel.swift */; };
 		C43F590B29571F5800CA682D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F590A29571F5800CA682D /* MessageCell.swift */; };
+		C43F590F29572D4A00CA682D /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F590E29572D4A00CA682D /* MessageViewModel.swift */; };
 		C4433185294F1C5A0095EB60 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4433184294F1C5A0095EB60 /* UserCell.swift */; };
 		C4433190294F33E90095EB60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C443318F294F33E90095EB60 /* User.swift */; };
 		C4433192294F34740095EB60 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4433191294F34740095EB60 /* Service.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		C417539A29470120004E3103 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C43F590A29571F5800CA682D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		C43F590E29572D4A00CA682D /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		C4433184294F1C5A0095EB60 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		C443318F294F33E90095EB60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C4433191294F34740095EB60 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				C417539A29470120004E3103 /* LoginViewModel.swift */,
 				C483720729475FBE00FF1560 /* RegisterViewModel.swift */,
 				C4E433C829566C5C00580EAF /* NewMessageViewModel.swift */,
+				C43F590E29572D4A00CA682D /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				C451F4EE2955DD8A00EE6939 /* Message.swift in Sources */,
 				C4F4C2C2294E680900FC70D5 /* MessageViewController.swift in Sources */,
 				C4BE25032945E76300E8AEA8 /* AuthenticationInputView.swift in Sources */,
+				C43F590F29572D4A00CA682D /* MessageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

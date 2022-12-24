@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class MessageCell: UITableViewCell {
     // MARK: - Properties
     var lastUser: LastUser?{
@@ -80,7 +80,10 @@ extension MessageCell{
     }
     private func configureMessageCell(){
         guard let lastUser = self.lastUser else { return }
+        let viewModel = MessageViewModel(lastUser: lastUser)
         self.usernameLabel.text = lastUser.user.username
         self.lastMessageLabel.text = lastUser.message.text
+        self.profileImageview.sd_setImage(with: viewModel.profileImage)
+        self.timesLabel.text = viewModel.timestampString
     }
 }

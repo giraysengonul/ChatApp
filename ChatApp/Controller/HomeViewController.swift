@@ -12,8 +12,9 @@ class HomeViewController: UIViewController {
     private var messageButton: UIBarButtonItem!
     private var newMessageButton: UIBarButtonItem!
     private var container =  Container()
-    private let messageViewController = NewMessageViewController()
-    private lazy var viewControllers:[UIViewController] = [MessageViewController(), messageViewController]
+    private let newMessageViewController = NewMessageViewController()
+    private let messageViewController = MessageViewController()
+    private lazy var viewControllers:[UIViewController] = [messageViewController, newMessageViewController]
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ extension HomeViewController{
         messageButton = UIBarButtonItem(customView: configureBarItem(text: "Message", selector: #selector(handleMessageButton)))
         newMessageButton = UIBarButtonItem(customView: configureBarItem(text: "New Message", selector: #selector(handleNewMessageButton)))
         self.navigationItem.leftBarButtonItems = [messageButton, newMessageButton]
+        self.newMessageViewController.delegate = self
         self.messageViewController.delegate = self
         //container
         configureContainer()
@@ -75,6 +77,10 @@ extension HomeViewController{
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    private func showChat(user: User){
+        let controller = ChatViewController(user: user)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 // MARK: - Selector
@@ -110,10 +116,16 @@ extension HomeViewController{
         }
     }
 }
+ // MARK: - NewMessageViewControllerProtocol
 extension HomeViewController: NewMessageViewControllerProtocol{
     func goToChatView(user: User) {
-        let controller = ChatViewController(user: user)
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.showChat(user: user)
+    }
+}
+ // MARK: - MessageViewControllerProtocol
+extension HomeViewController: MessageViewControllerProtocol{
+    func showChatViewController(_ messageViewController: MessageViewController, user: User) {
+        self.showChat(user: user)
     }
 }
 
