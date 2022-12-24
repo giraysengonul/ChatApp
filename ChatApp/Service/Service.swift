@@ -19,7 +19,28 @@ struct Service {
             completion(users)
         }
     }
-    
+    static func fetchUser(uid: String, completion: @escaping(User)->Void){
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() else{ return }
+            let user = User(data: data)
+            completion(user)
+        }
+    }
+    static func fetchLastUsers(completion: @escaping([LastUser])->Void){
+        var lastUsers = [LastUser]()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("messages").document(uid).collection("last-messages").order(by: "timestamp").addSnapshotListener { snapshot, error in
+            snapshot?.documentChanges.forEach({ value in
+                let data = value.document.data()
+                let message = Message(data: data)
+                self.fetchUser(uid: message.toId) { user in
+                    lastUsers.append(LastUser(user: user, message: message))
+                    completion(lastUsers)
+                }
+            })
+        }
+        
+    }
     static func sendMessage(message: String, toUser: User, completion: @escaping(Error?) -> Void){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let data = [
