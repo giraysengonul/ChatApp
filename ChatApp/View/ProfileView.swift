@@ -7,37 +7,45 @@
 
 import UIKit
 import FirebaseAuth
+import SDWebImage
+protocol ProfileViewProtocol: AnyObject {
+    func signOutProfile()
+}
 class ProfileView: UIView {
     // MARK: - Properties
+    var user: User?{
+        didSet{ configure() }
+    }
+    weak var delegate: ProfileViewProtocol?
     private let gradient = CAGradientLayer()
     private let profileImageView:UIImageView = {
-        let imageVİew = UIImageView()
-        imageVİew.clipsToBounds = true
-        imageVİew.contentMode = .scaleAspectFill
-        imageVİew.backgroundColor = .lightGray
-        return imageVİew
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .lightGray
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 2.5
+        return imageView
     }()
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
-        label.textColor = .white
-        label.text = "name label"
+        label.textAlignment = .center
         return label
     }()
-    private let usernameLabel: UILabel = {
+    private lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
-        label.textColor = .white
-        label.text = "username label"
+        label.textAlignment = .center
         return label
     }()
-    private let signOutButton: UIButton = {
+    private lazy var signOutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("SignOut", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor.systemRed
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(handleSignOutButton), for: .touchUpInside)
         return button
     }()
     private lazy var stackView = UIStackView()
@@ -53,6 +61,12 @@ class ProfileView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradient.frame = bounds
+    }
+}
+ // MARK: - Selector
+extension ProfileView{
+    @objc private func handleSignOutButton(_ sender: UIButton){
+        delegate?.signOutProfile()
     }
 }
 // MARK: - Helpers
@@ -83,14 +97,18 @@ extension ProfileView{
             stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 12),
-            
         ])
-        
     }
-    private func fetchUser(){
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Service.fetchUser(uid: uid) { user in
-            print(user.username)
-        }
+    
+    private func attributeTitle(headerTitle: String, title: String)-> NSMutableAttributedString{
+        let attributed = NSMutableAttributedString(string: "\(headerTitle): ", attributes: [.foregroundColor: UIColor.white.withAlphaComponent(0.7), .font: UIFont.systemFont(ofSize: 16, weight: .bold)])
+        attributed.append(NSAttributedString(string: title,attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20, weight: .heavy)]))
+        return attributed
+    }
+    private func configure(){
+        guard let user = self.user else { return }
+        self.usernameLabel.attributedText = attributeTitle(headerTitle: "Username", title: "\(user.username)")
+        self.nameLabel.attributedText = attributeTitle(headerTitle: "Name", title: "\(user.name)")
+        self.profileImageView.sd_setImage(with: URL(string: user.profileImageUrl))
     }
 }

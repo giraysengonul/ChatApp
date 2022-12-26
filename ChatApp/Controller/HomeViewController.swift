@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
         authenticationStatus()
         style()
         layout()
+        fetchUser()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +32,12 @@ class HomeViewController: UIViewController {
 }
 // MARK: - Helpers
 extension HomeViewController{
+    private func fetchUser(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Service.fetchUser(uid: uid) { user in
+            self.profileView.user = user
+        }
+    }
     private func configureBarItem(text: String, selector: Selector)-> UIButton{
         let button = UIButton(type: .system)
         button.setTitle(text, for: .normal)
@@ -68,6 +75,7 @@ extension HomeViewController{
         profileView.translatesAutoresizingMaskIntoConstraints = false
         profileView.layer.cornerRadius = 20
         profileView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        profileView.delegate = self
         //container
         configureContainer()
         handleMessageButton()
@@ -153,4 +161,9 @@ extension HomeViewController: MessageViewControllerProtocol{
         self.showChat(user: user)
     }
 }
-
+ // MARK: - ProfileViewProtocol
+extension HomeViewController: ProfileViewProtocol{
+    func signOutProfile() {
+        self.signOut()
+    }
+}
